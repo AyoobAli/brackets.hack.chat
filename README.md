@@ -3,11 +3,12 @@
 This is an extension to integration [hack.chat](https://hack.chat/) with [Brackets](http://brackets.io). 
 
 Feel free to fork or use the code for any other extension.
+![alt text](screenshot/screenshot.png "Main Channel + Private Channel")
 
 ### Installation
 
 * Select **File > Extension Manager...** (or click the "brick" icon in the toolbar)
-* Click **Install from URL...**
+* Click **Install from URL...** or search for **Hack.Chat Integration**
 * Enter the url of this repo: https://github.com/AyoobAli/brackets.hack.chat
 * Click **Install**
 

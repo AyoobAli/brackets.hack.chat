@@ -1,0 +1,14 @@
+/* Toolbar icon */
+#hackChatIcon {
+    background: url(hackChatIcon.svg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+#hackChatIcon.on {
+    background-position: 0 -24px !important;
+}
+
+#hackChatIframe {
+    background: #1d1f21;
+}

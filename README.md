@@ -24,3 +24,8 @@ Feel free to fork or use the code for any other extension.
 
  - Option to switch the Chat panel between bottom and sidebar.
  - Option to change the main server (https://hack.chat/).
+ 
+#### Update
+
+ - _v0.0.2_ - 14/07/2015
+    - By [ToastyStoemp](https://github.com/ToastyStoemp): When channel is entered with or without '?' it will connect to the same channel.

@@ -96,12 +96,12 @@ define(function (require, exports, module) {
      */
     function _setIframeURL() {
         var chatURL = "https://hack.chat/";
-        var channelNameP;
         if (chName !== null) {
-			if (chName[0] == "?")
-				chatURL += chName;
-			else
-            chatURL += "?" + chName;
+            if (chName[0] === "?") {
+                chatURL += chName;
+            } else {
+                chatURL += "?" + chName;
+            }
         } else {
             if (_generateChannelName()) {
                 chatURL += "?" + chName;

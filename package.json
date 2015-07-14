@@ -3,7 +3,7 @@
     "title": "Hack.Chat Integration",
     "description": "This extension is hack.chat integration with Brackets.",
     "homepage": "https://github.com/AyoobAli/brackets.hack.chat",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Ayoob Ali <Github@AyoobAli.com> (https://github.com/AyoobAli)",
     "license": "MIT",
     "engines": {

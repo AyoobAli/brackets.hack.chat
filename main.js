@@ -98,6 +98,9 @@ define(function (require, exports, module) {
         var chatURL = "https://hack.chat/";
         var channelNameP;
         if (chName !== null) {
+			if (chName[0] == "?")
+				chatURL += chName;
+			else
             chatURL += "?" + chName;
         } else {
             if (_generateChannelName()) {

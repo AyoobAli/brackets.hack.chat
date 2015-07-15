@@ -53,8 +53,8 @@ define(function (require, exports, module) {
     var PanelManager        = brackets.getModule("view/PanelManager");
 
     var templatePath        = require("text!template.html");
-    var menuTitle           = "Hack.Chat - Change Channel";
-    var extID               = "brackets.hack.chat";
+    var menuTitle           = ["Hack.Chat", "Channel: ?programming", "Hack.Chat - Change Channel"];
+    var extID               = ["brackets.hack.chat.mnu1", "brackets.hack.chat.mnu2", "brackets.hack.chat.mnu3"];
 
     var $toolbarIcon;
     var $iframe;
@@ -96,6 +96,7 @@ define(function (require, exports, module) {
      */
     function _setIframeURL() {
         var chatURL = "https://hack.chat/";
+        var channelNameP;
         if (chName !== null) {
             if (chName[0] === "?") {
                 chatURL += chName;
@@ -225,7 +226,6 @@ define(function (require, exports, module) {
             if (!isOn) {
                 isOn = true;
                 _switchChatBox(isOn);
-                window.setTimeout(_iframeReloader);
             } else {
                 _iframeReloader();
             }
@@ -234,11 +234,45 @@ define(function (require, exports, module) {
 
     /**
      *
+     * join a channel
+     *
+     */
+    function _joinMain(channelName) {
+        chName = channelName;
+        $("#hackChatIcon").attr({ title: "Hack.Chat: " + channelName });
+        if (!isOn) {
+            isOn = true;
+            _switchChatBox(isOn);
+        } else {
+            _iframeReloader();
+        }
+    }
+
+    /**
+     *
+     * Join Channel Menu Items
+     *
+     */
+    function _menuJoinMain() {
+        _joinMain("?");
+    }
+
+    function _menuJoinProgramming() {
+        _joinMain("?programming");
+    }
+
+    /**
+     *
      * Creating menu item.
      *
      */
-    CommandManager.register(menuTitle, extID, _changeChannel);
+    CommandManager.register(menuTitle[0], extID[0], _menuJoinMain);
+    CommandManager.register(menuTitle[1], extID[1], _menuJoinProgramming);
+    CommandManager.register(menuTitle[2], extID[2], _changeChannel);
     var menu = Menus.getMenu(Menus.AppMenuBar.NAVIGATE_MENU);
-    menu.addMenuItem(extID);
+    menu.addMenuDivider();
+    menu.addMenuItem(extID[0]);
+    menu.addMenuItem(extID[1]);
+    menu.addMenuItem(extID[2]);
 
 });

@@ -27,5 +27,10 @@ Feel free to fork or use the code for any other extension.
  
 #### Update
 
+ - _v0.0.3_ - 15/07/2015
+    - ADD: Menu item to go to the main page of hack.chat
+    - ADD: Menu item to join ?programming channel.
+    - FIX: Panel gives an error when loading for the first time.
+
  - _v0.0.2_ - 14/07/2015
     - By [ToastyStoemp](https://github.com/ToastyStoemp): When channel is entered with or without '?' it will connect to the same channel.

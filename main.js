@@ -53,8 +53,8 @@ define(function (require, exports, module) {
     var PanelManager        = brackets.getModule("view/PanelManager");
 
     var templatePath        = require("text!template.html");
-    var menuTitle           = ["Hack.Chat", "Channel: ?programming", "Hack.Chat - Change Channel"];
-    var extID               = ["brackets.hack.chat.mnu1", "brackets.hack.chat.mnu2", "brackets.hack.chat.mnu3"];
+    var menuTitle           = ["Hack.Chat", "Channel: ?programming", "Hack.Chat - Change Channel", "Current Channel"];
+    var extID               = ["brackets.hack.chat.mnu1", "brackets.hack.chat.mnu2", "brackets.hack.chat.mnu3", "brackets.hack.chat.mnu4"];
 
     var $toolbarIcon;
     var $iframe;
@@ -79,7 +79,7 @@ define(function (require, exports, module) {
                 channelName += String.fromCharCode(Math.floor(Math.random() * (122 - 97 + 1) + 97));
             }
         }
-        channelName = prompt("What's the Channel Name?", channelName);
+        channelName = prompt("Channel Name: ", channelName);
         if (channelName !== null) {
             chName = channelName;
             $("#hackChatIcon").attr({ title: "Hack.Chat: " + chName });
@@ -254,11 +254,35 @@ define(function (require, exports, module) {
      *
      */
     function _menuJoinMain() {
-        _joinMain("?");
+        if ( chName !== null && chName !== "" ) {
+            if (!confirm("Are you sure you want to leave channel: " + chName)) {
+                return false;
+            }
+        }
+        _joinMain("");
     }
 
     function _menuJoinProgramming() {
-        _joinMain("?programming");
+        if ( chName !== null && chName !== "" ) {
+            if (!confirm("Are you sure you want to leave channel: " + chName)) {
+                return false;
+            }
+        }
+        _joinMain("programming");
+    }
+
+    function _menuChannelName() {
+        if ( chName === null || chName === "" ) {
+            alert("You are not in any channel.");
+            return false;
+        }
+        var chatURL = "https://hack.chat/";
+        if (chName[0] === "?") {
+            chatURL += chName;
+        } else {
+            chatURL += "?" + chName;
+        }
+        prompt("You are in: ", chatURL);
     }
 
     /**
@@ -269,10 +293,12 @@ define(function (require, exports, module) {
     CommandManager.register(menuTitle[0], extID[0], _menuJoinMain);
     CommandManager.register(menuTitle[1], extID[1], _menuJoinProgramming);
     CommandManager.register(menuTitle[2], extID[2], _changeChannel);
+    CommandManager.register(menuTitle[3], extID[3], _menuChannelName);
     var menu = Menus.getMenu(Menus.AppMenuBar.NAVIGATE_MENU);
     menu.addMenuDivider();
     menu.addMenuItem(extID[0]);
     menu.addMenuItem(extID[1]);
     menu.addMenuItem(extID[2]);
+    menu.addMenuItem(extID[3]);
 
 });

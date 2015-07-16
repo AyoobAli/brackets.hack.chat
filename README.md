@@ -30,6 +30,7 @@ Feel free to fork or use the code for any other extension.
  - _v0.0.4_ - 16/07/2015
     - Add: Confirmation message when changing channel.
     - Add: New menu Item to get the URL to the current channel.
+    - Fix: Deosn't change channel when panel is hidden.
     
  - _v0.0.3_ - 15/07/2015
     - ADD: Menu item to go to the main page of hack.chat

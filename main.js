@@ -226,6 +226,7 @@ define(function (require, exports, module) {
             if (!isOn) {
                 isOn = true;
                 _switchChatBox(isOn);
+                _iframeReloader();
             } else {
                 _iframeReloader();
             }
@@ -243,6 +244,7 @@ define(function (require, exports, module) {
         if (!isOn) {
             isOn = true;
             _switchChatBox(isOn);
+            _iframeReloader();
         } else {
             _iframeReloader();
         }

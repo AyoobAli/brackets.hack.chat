@@ -27,15 +27,19 @@ Feel free to fork or use the code for any other extension.
  
 #### Update
 
+ - _v0.0.5_ - 22/07/2015
+    - Add: New menu item to rejoin the current channel.
+    - Change: Changed the toolbar Icon.
+    
  - _v0.0.4_ - 16/07/2015
     - Add: Confirmation message when changing channel.
     - Add: New menu Item to get the URL to the current channel.
     - Fix: Deosn't change channel when panel is hidden.
     
  - _v0.0.3_ - 15/07/2015
-    - ADD: Menu item to go to the main page of hack.chat
-    - ADD: Menu item to join ?programming channel.
-    - FIX: Panel gives an error when loading for the first time.
+    - Add: Menu item to go to the main page of hack.chat
+    - Add: Menu item to join ?programming channel.
+    - Fix: Panel gives an error when loading for the first time.
 
  - _v0.0.2_ - 14/07/2015
     - By [ToastyStoemp](https://github.com/ToastyStoemp): When channel is entered with or without '?' it will connect to the same channel.

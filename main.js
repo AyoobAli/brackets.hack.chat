@@ -53,8 +53,8 @@ define(function (require, exports, module) {
     var PanelManager        = brackets.getModule("view/PanelManager");
 
     var templatePath        = require("text!template.html");
-    var menuTitle           = ["Hack.Chat", "Channel: ?programming", "Hack.Chat - Change Channel", "Current Channel"];
-    var extID               = ["brackets.hack.chat.mnu1", "brackets.hack.chat.mnu2", "brackets.hack.chat.mnu3", "brackets.hack.chat.mnu4"];
+    var menuTitle           = ["Hack.Chat", "Channel: ?programming", "Hack.Chat - Change Channel", "Current Channel", "Rejoin Channel"];
+    var extID               = ["brackets.hack.chat.mnu1", "brackets.hack.chat.mnu2", "brackets.hack.chat.mnu3", "brackets.hack.chat.mnu4", "brackets.hack.chat.mnu5"];
 
     var $toolbarIcon;
     var $iframe;
@@ -256,7 +256,7 @@ define(function (require, exports, module) {
      *
      */
     function _menuJoinMain() {
-        if ( chName !== null && chName !== "" ) {
+        if (chName !== null && chName !== "") {
             if (!confirm("Are you sure you want to leave channel: " + chName)) {
                 return false;
             }
@@ -265,7 +265,7 @@ define(function (require, exports, module) {
     }
 
     function _menuJoinProgramming() {
-        if ( chName !== null && chName !== "" ) {
+        if (chName !== null && chName !== "") {
             if (!confirm("Are you sure you want to leave channel: " + chName)) {
                 return false;
             }
@@ -274,7 +274,7 @@ define(function (require, exports, module) {
     }
 
     function _menuChannelName() {
-        if ( chName === null || chName === "" ) {
+        if (chName === null || chName === "") {
             alert("You are not in any channel.");
             return false;
         }
@@ -287,6 +287,17 @@ define(function (require, exports, module) {
         prompt("You are in: ", chatURL);
     }
 
+    function _menuRejoinChannel() {
+        if (chName === null || chName === "") {
+            alert("You are not in any channel.");
+            return false;
+        }
+        if (!confirm("Are you sure you want to rejoin: " + chName + " ?")) {
+            return false;
+        }
+        _joinMain(chName);
+    }
+
     /**
      *
      * Creating menu item.
@@ -296,11 +307,13 @@ define(function (require, exports, module) {
     CommandManager.register(menuTitle[1], extID[1], _menuJoinProgramming);
     CommandManager.register(menuTitle[2], extID[2], _changeChannel);
     CommandManager.register(menuTitle[3], extID[3], _menuChannelName);
+    CommandManager.register(menuTitle[4], extID[4], _menuRejoinChannel);
     var menu = Menus.getMenu(Menus.AppMenuBar.NAVIGATE_MENU);
     menu.addMenuDivider();
     menu.addMenuItem(extID[0]);
     menu.addMenuItem(extID[1]);
     menu.addMenuItem(extID[2]);
     menu.addMenuItem(extID[3]);
+    menu.addMenuItem(extID[4]);
 
 });
